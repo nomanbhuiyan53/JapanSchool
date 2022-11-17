@@ -17,11 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.page.home');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('admin.page.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -44,3 +44,4 @@ Route::get('/program/module',[ViewController::class,'TestModul'])->name('test.mo
 // ====== Backend View Controllar start ================
 
 Route::get('/admin',[BackendViewController::class,'LoginPage'])->name('login.page');
+Route::get('/sider/add',[BackendViewController::class,'SliderView'])->name('slider.view');
