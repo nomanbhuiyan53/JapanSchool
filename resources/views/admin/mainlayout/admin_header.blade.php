@@ -1,5 +1,11 @@
 <body>
     <!-- Layout wrapper -->
+
+@php
+    $prefix = Request::route()->getPrefix();
+    $route = Route::current()->getName();
+@endphp
+
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <!-- Menu -->
@@ -74,7 +80,7 @@
 
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item active">
+            <li class="menu-item {{ (Request::is('dashboard'))? 'active':''}}">
               <a href="{{ route('dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
@@ -82,65 +88,41 @@
             </li>
 
             <!-- Layouts -->
-            <li class="menu-item">
+            <li class="menu-item {{ (Request::is('slider/*'))? 'open': ''}}">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div data-i18n="Layouts">Slider Setup</div>
               </a>
 
-              <ul class="menu-sub">
-                <li class="menu-item">
+              <ul class="menu-sub ">
+                <li class="menu-item {{ (Request::is('slider/add'))? 'active':''}}">
                   <a href="{{ route('slider.view') }}" class="menu-link">
                     <div data-i18n="Without menu">Slider View</div>
                   </a>
-                </li>
-                <li class="menu-item">
-                  <a href="layouts-without-navbar.html" class="menu-link">
-                    <div data-i18n="Without navbar">Without navbar</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="layouts-container.html" class="menu-link">
-                    <div data-i18n="Container">Container</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="layouts-fluid.html" class="menu-link">
-                    <div data-i18n="Fluid">Fluid</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="layouts-blank.html" class="menu-link">
-                    <div data-i18n="Blank">Blank</div>
-                  </a>
-                </li>
+                </li>          
               </ul>
             </li>
 
             <li class="menu-header small text-uppercase">
-              <span class="menu-header-text">Pages</span>
+              <span class="menu-header-text">All Data</span>
             </li>
-            <li class="menu-item">
+            <li class="menu-item {{ (Request::is('alldata/*'))? 'open':''}}">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">Account Settings</div>
+                <div data-i18n="Account Settings">All Data</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="pages-account-settings-account.html" class="menu-link">
-                    <div data-i18n="Account">Account</div>
+                <li class="menu-item {{ (Request::is('alldata/view'))? 'active':''}}">
+                  <a href="{{ route('all.data') }}" class="menu-link">
+                    <div data-i18n="Account">Information View</div>
                   </a>
                 </li>
-                <li class="menu-item">
-                  <a href="pages-account-settings-notifications.html" class="menu-link">
-                    <div data-i18n="Notifications">Notifications</div>
+                <li class="menu-item {{ (Request::is('alldata/add'))? 'active':''}}">
+                  <a href="{{ route('alldata.add') }}" class="menu-link">
+                    <div data-i18n="Notifications">Information Add</div>
                   </a>
                 </li>
-                <li class="menu-item">
-                  <a href="pages-account-settings-connections.html" class="menu-link">
-                    <div data-i18n="Connections">Connections</div>
-                  </a>
-                </li>
+                
               </ul>
             </li>
             <li class="menu-item">

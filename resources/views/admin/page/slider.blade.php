@@ -12,7 +12,7 @@
             <small class="text-muted float-end">Add slider info</small>
           </div>
           <div class="card-body">
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('slider.add') }}" method="POST" enctype="multipart/form-data">
                 @csrf
               <div class="mb-3">
                 <label class="form-label" for="basic-default-fullname">Title</label>
@@ -20,7 +20,7 @@
               </div>
               <div>
                 <label for="formFileDisabled" class="form-label">Slider Image</label>
-                <input class="form-control" type="file" id="image formFileDisabled" disabled="">
+                <input class="form-control" name="image" type="file" id="formFileDisabled" >
               </div>
               <br>
               <button type="submit" class="btn btn-primary">Submit</button>
@@ -52,9 +52,10 @@
                             
                             <td>{{ $key+1 }}</td>
                             <td>{{ $value->title }}</td>
-                            <td>{{ $value->image }}</td>
+                            <td ><img style="height: 80px" src="{{ asset('uploads/'.$value->image)  }}" alt=""> </td>
                             <td>Active</td>
                             <td>
+                              <a href="" class="btn btn-success" >Active</a>
                                 <a href="" class="btn btn-primary">Edit</a>
                                 <a href="" class="btn btn-danger" >Delete</a>
                             </td>

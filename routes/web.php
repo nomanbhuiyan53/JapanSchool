@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AllInfoController;
 use App\Http\Controllers\backend\BackendViewController;
 use App\Http\Controllers\frontend\ViewController;
 use App\Http\Controllers\ProfileController;
@@ -44,4 +45,20 @@ Route::get('/program/module',[ViewController::class,'TestModul'])->name('test.mo
 // ====== Backend View Controllar start ================
 
 Route::get('/admin',[BackendViewController::class,'LoginPage'])->name('login.page');
-Route::get('/sider/add',[BackendViewController::class,'SliderView'])->name('slider.view');
+Route::prefix('slider')->group(function(){
+    Route::get('/add',[BackendViewController::class,'SliderView'])->name('slider.view');
+    // ==== slider route ===
+    Route::post('/insart',[BackendViewController::class,'SliderAdd'])->name('slider.add');
+});
+
+//========= all information ================
+Route::prefix('alldata')->group(function(){
+
+});
+Route::get('/alldata/view',[BackendViewController::class,'AlldataView'])->name('all.data');
+Route::get('/alldata/add',[BackendViewController::class,'AlldataAdd'])->name('alldata.add');
+Route::post('/alldata/insart',[BackendViewController::class,'InfoAdd'])->name('info.add');
+Route::get('/alldata/edit/{id}',[AllInfoController::class,'InfoEditView'])->name('info.edit');
+
+Route::get('/delete/{id}',[AllInfoController::class,'InfoDelete'])->name('info.delete');
+//=========== end info =====================
