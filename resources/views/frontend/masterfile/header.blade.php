@@ -1,22 +1,24 @@
 
 @php
     $routeName = Route::current()->getName();
+    $Mdata = MainData();
+    
 @endphp
 @if ($routeName == 'program.one')
-<div class="container-fluid headerbg mb-4">  
+<div class=" headerbg mb-4">  
 @elseif($routeName == 'program.two')
-<div class="container-fluid headerbg2 mb-4">  
+<div class=" headerbg2 mb-4">  
 @elseif($routeName == 'program.three')
-<div class="container-fluid headerbg4 mb-4">  
+<div class=" headerbg4 mb-4">  
 @elseif($routeName == 'test.modul')
-<div class="container-fluid headerbg3 mb-4">  
+<div class=" headerbg3 mb-4">  
 @endif
 {{--  --}}
-  <div class="header"> 
+  <div class="navbg"> 
     <!-- navbar start -->
-    <nav class="navbar navbar-expand-lg ">
+    <nav class="navbar  navbar-expand-lg ">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#"><img class="logo" src="{{ asset('assets/image/logo.png') }}" alt=""></a>
+          <a class="navbar-brand" href="#"><img class="logo" src="{{ asset('uploads').'/'.$Mdata->logo }}" alt=""></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>

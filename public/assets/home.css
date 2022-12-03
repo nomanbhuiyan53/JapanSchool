@@ -1,5 +1,7 @@
 .slidercaption{
-    margin-bottom: 150px;
+    margin-bottom: 100px;
+   padding-left: 15%;
+   padding-right: 15%;
     
 }
 .cardRow{
@@ -34,6 +36,11 @@
     color: #fff;
     
 }
+
+.navbg{
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.464);
+}
 .titel h1{
     font-size: 50px;
     font-weight: 700;
@@ -63,10 +70,6 @@
     justify-content: center;
     align-items: center;
     background: #f8f8f8;
-  }
-  
-  * {
-    box-sizing: border-box;
   }
   
   .center-marker {
@@ -165,4 +168,11 @@
     .js-slideshow__thumbs-wrapper {
       display: block;
     }
+
+    .slidercaption{
+    margin-bottom: 50px;
+      font-size: 25px;
+  }
+
+
   }

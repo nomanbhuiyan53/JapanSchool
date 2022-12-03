@@ -16,16 +16,24 @@
                 </div>
             </div>
             <div class="slidershow">
-              
-              <img src="https://source.unsplash.com/ufFIweqSPd4/800x800" class="main">
+                @php
+                    $image = imageGallery();
+                    //dd($image);
+                @endphp
+             
+              <img src="{{ asset('uploads/1669891196pimg1.jpeg' ) }}" class="main">
               <div class="thumbnails">
-                <img class="imgs" src="https://source.unsplash.com/ufFIweqSPd4/800x800">
-                <img class="imgs" src="https://source.unsplash.com/O0uCm1WLnA0/800x800">
+                @foreach ($image as $item)
+                <img class="imgs" src="{{ asset('uploads'.'/'.$item->image ) }}">
+                {{-- <img class="imgs" src="https://source.unsplash.com/O0uCm1WLnA0/800x800">
                 <img class="imgs" src="https://source.unsplash.com/pV5ckb2HEVk/800x800">
                 <img class="imgs" src="https://source.unsplash.com/j9QEFAQqaXc/800x800">
                 <img class="imgs" src="https://source.unsplash.com/EXkbaeN05lY/800x800">
-                <img class="imgs" src="https://source.unsplash.com/B2mq60Ksrsg/800x800">
-              </div>
+                <img class="imgs" src="https://source.unsplash.com/B2mq60Ksrsg/800x800"> --}}
+                @endforeach  
+            </div>
+             
+              
             </div> {{-- slider end --}}
             <br><br>
             <hr>

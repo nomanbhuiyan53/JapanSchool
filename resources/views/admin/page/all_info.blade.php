@@ -45,7 +45,7 @@
                         <tr>
                             <td>
                               <a href="{{ route('info.edit',$item->id) }}" class="btn btn-primary">Edit</a>
-                              <a href="{{ route('info.delete',$item->id) }}" class="btn btn-danger" >Delete</a>
+                              <a href="{{ route('info.delete',$item->id) }}" class="btn btn-danger delete-confirm" >Delete</a>
                             </td>
                         </tr>
                         <br><br>
@@ -59,6 +59,23 @@
 </div>
            {{-- add from end --}}
 
-    
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $('.delete-confirm').on('click', function (event) {
+    event.preventDefault();
+    const url = $(this).attr('href');
+    swal({
+        title: 'Are you sure?',
+        text: 'This record and it`s details will be permanantly deleted!',
+        icon: 'warning',
+        buttons: ["Cancel", "Yes!"],
+    }).then(function(value) {
+        if (value) {
+            window.location.href = url;
+        }
+    });
+});
+</script>
+
 
 @endsection

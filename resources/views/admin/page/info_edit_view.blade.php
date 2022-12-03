@@ -21,11 +21,11 @@
             <small class="text-muted float-end">Update information data</small>
           </div>
           <div class="card-body">
-            <form action="{{ route('info.add') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('info.update',$editData->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
               <div class="mb-3">
                 <label class="form-label" for="basic-default-fullname">School Name</label>
-                <input type="text" name="title" value="{{ $editData->name }}" class="form-control title" id="basic-default-fullname" placeholder="school Name">
+                <input type="text" name="name" value="{{ $editData->name }}" class="form-control title" id="basic-default-fullname" placeholder="school Name">
               </div>
               <div class="mb-3">
                 <label class="form-label" for="basic-default-fullname">Email</label>

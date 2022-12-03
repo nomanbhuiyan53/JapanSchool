@@ -10,32 +10,38 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   </head>
   <body>
-    
+    @php
+      $Mdata = MainData();
+      $data = sliderData();
+      //dd($Mdata->fb);
+    @endphp
     <div class="container-fluid maincontainer">
         <!-- slider  -->
-        
 
           <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
            
             <div class="carousel-inner">
-              <div class="carousel-item active" data-bs-interval="5000">
-                <img src="{{ asset('assets/image/homebg.jpg') }}" class="d-block w-100 slidImage" alt="...">
+              @foreach ($data as $item)
+              <div class="carousel-item active" data-bs-interval="2000">
+                <img src="{{ asset('uploads').'/'.$item->image }}" class="d-block w-100 slidImage" alt="...">
                 <div class="carousel-caption d-none d-md-block slidercaption">
-                    <p class="slidTitle">NTERNSHIP AND EXCHANGE <br> PROGRAMS <br> ABROAD</p>
+                    <p class="slidTitle">{{ $item->title }}</p>
                 </div>
               </div>
-              <div class="carousel-item" data-bs-interval="2000">
+
+              @endforeach
+              {{-- <div class="carousel-item" data-bs-interval="2000">
                 <img src="{{ asset('assets/image/bgtwo.jpeg') }}" class="d-block w-100 slidImage" alt="...">
                 <div class="carousel-caption d-none d-md-block slidercaption">
-                    <p class="slidTitle">NTERNSHIP AND EXCHANGE <br> PROGRAMS <br> ABROAD</p>
+                    <p class="slidTitle">NTERNSHIP AND EXCHANGE PROGRAMS ABROAD</p>
                 </div>
-              </div>
-              <div class="carousel-item">
+              </div> --}}
+              {{-- <div class="carousel-item">
                 <img src="{{ asset('assets/image/bgthree.jpeg') }}" class="d-block w-100 slidImage" alt="...">
                 <div class="carousel-caption d-none d-md-block slidercaption">
-                    <p class="slidTitle">NTERNSHIP AND EXCHANGE <br> PROGRAMS <br> ABROAD</p>
+                    <p class="slidTitle">NTERNSHIP AND EXCHANGE PROGRAMS ABROAD</p>
                 </div>
-              </div>
+              </div> --}}
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -50,7 +56,7 @@
            <!-- nav bar start -->
          <nav class="navbar homeNav navbar-expand-lg ">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#"><img class="logo" src="image/logo.png" alt=""></a>
+              <a class="navbar-brand" href="#"><img class="logo" src="{{ asset('uploads').'/'.$Mdata->logo }}" alt=""></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -153,12 +159,12 @@
 
           </div>
     </div>
-
+    
     <div class="container-fluid mt-5 footer">
        <div class="row ">
         <div class="col text-center">
             <br>
-            <h4><a href="">Follow us on Facebook to get the latest updates
+            <h4><a href="{{ $Mdata->fb }}">Follow us on Facebook to get the latest updates
             </a></h4><br>
             <span class="socal"><i class="bi bi-envelope"></i> <i class="bi bi-facebook"></i></span><br>
             <p>© BRYDGE Philippines Inc., . Designed by Designstaq.</p>

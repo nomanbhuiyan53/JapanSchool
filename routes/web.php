@@ -3,7 +3,9 @@
 use App\Http\Controllers\AllInfoController;
 use App\Http\Controllers\backend\BackendViewController;
 use App\Http\Controllers\frontend\ViewController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Slider;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+   
     return view('frontend.page.home');
 });
 
@@ -61,4 +64,15 @@ Route::post('/alldata/insart',[BackendViewController::class,'InfoAdd'])->name('i
 Route::get('/alldata/edit/{id}',[AllInfoController::class,'InfoEditView'])->name('info.edit');
 
 Route::get('/delete/{id}',[AllInfoController::class,'InfoDelete'])->name('info.delete');
+Route::post('/update/{id}',[AllInfoController::class,'InfoUpdate'])->name('info.update');
 //=========== end info =====================
+
+//============== Gallery Route start ===========================
+
+Route::prefix('gallery')->group(function(){
+    Route::get('/view',[GalleryController::class,'GalleyView'])->name('gallery.view');
+    Route::get('/add/view',[GalleryController::class,'GalleryAddView'])->name('gallery.add');
+    Route::post('/upload',[GalleryController::class,'GalleryUpload'])->name('gallery.upload');
+    Route::get('/image/add',[GalleryController::class,'GalleryImageAdd'])->name('gallery.image');
+    Route::post('/image/upload',[GalleryController::class,'ImageUpload'])->name('image.upload');
+});
